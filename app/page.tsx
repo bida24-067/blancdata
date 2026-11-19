@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { services } from '@/content/services'
 import { getPublishedProjects } from '@/lib/db'
 import ProjectCardTile from '@/components/ProjectCardTile'
@@ -17,16 +18,29 @@ export default async function HomePage() {
     <div className="flex flex-col">
       {/* ── Hero Section ── */}
       <section className="relative pt-12 pb-20 md:pt-24 md:pb-32 overflow-hidden bg-[#121212] border-b border-white/[0.08]">
+        {/* Background Image at 45% opacity */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <Image
+            src="/background.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center opacity-45"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/40 via-transparent to-[#121212]" />
+        </div>
+
         {/* Glow backdrop */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-40"
+          className="absolute inset-0 pointer-events-none opacity-40 z-0"
           style={{
             background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(159, 163, 252, 0.18) 0%, transparent 70%)',
           }}
           aria-hidden="true"
         />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.05] border border-white/[0.1] text-xs font-medium text-white/80">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>

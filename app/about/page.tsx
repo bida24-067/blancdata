@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { team } from '@/content/team'
 import { BreadcrumbSchema } from '@/components/BreadcrumbSchema'
 
@@ -40,8 +41,30 @@ export default function AboutPage() {
         ]}
       />
       {/* ── Header ── */}
-      <section className="py-16 md:py-24 border-b border-white/[0.08] bg-[#121212]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 md:py-24 border-b border-white/[0.08] bg-[#121212] overflow-hidden">
+        {/* Background Image at 45% opacity */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <Image
+            src="/about-bg.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center opacity-45"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/40 via-transparent to-[#121212]" />
+        </div>
+
+        {/* Glow backdrop */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-40 z-0"
+          style={{
+            background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(159, 163, 252, 0.18) 0%, transparent 70%)',
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold tracking-widest uppercase text-[#9fa3fc] block mb-3">
               About Blanc Data
