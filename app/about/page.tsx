@@ -91,10 +91,10 @@ export default function AboutPage() {
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full bg-white/[0.06] border border-white/[0.1] flex items-center justify-center text-xl font-bold text-white/80">
+                    <div className="w-14 h-14 rounded-full bg-white/[0.06] border border-white/[0.1] flex items-center justify-center text-xl font-bold text-white/80 shrink-0">
                       {member.name.charAt(0)}
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="text-xl font-medium text-white">{member.name}</h3>
                       <p className="text-xs font-semibold uppercase tracking-wider text-[#9fa3fc]">
                         {member.role}
@@ -104,6 +104,55 @@ export default function AboutPage() {
                   <p className="text-sm md:text-base text-white/65 leading-relaxed">
                     {member.bio}
                   </p>
+
+                  {/* Contact Channels */}
+                  {(member.email || member.linkedin || member.instagram) && (
+                    <div className="pt-2 flex flex-wrap items-center gap-2.5 text-xs">
+                      {member.email && (
+                        <a
+                          href={`mailto:${member.email}`}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.08] hover:border-white/20 transition-all"
+                          aria-label={`Email ${member.name}`}
+                        >
+                          <svg className="w-3.5 h-3.5 text-[#9fa3fc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                          </svg>
+                          <span>{member.email}</span>
+                        </a>
+                      )}
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.08] hover:border-white/20 transition-all"
+                          aria-label={`${member.name}'s LinkedIn profile`}
+                        >
+                          <svg className="w-3.5 h-3.5 text-[#9fa3fc]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.53 1.53 0 0 0 0-3.06 1.53 1.53 0 0 0 0 3.06m1.4 9.74V9.96H5.06v8.54h2.8z" />
+                          </svg>
+                          <span>LinkedIn</span>
+                        </a>
+                      )}
+                      {member.instagram && (
+                        <a
+                          href={member.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.08] hover:border-white/20 transition-all"
+                          aria-label={`${member.name}'s Instagram profile`}
+                        >
+                          <svg className="w-3.5 h-3.5 text-[#9fa3fc]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                          </svg>
+                          <span>Instagram</span>
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {member.skills && member.skills.length > 0 && (
