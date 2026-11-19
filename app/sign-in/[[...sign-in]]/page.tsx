@@ -4,6 +4,8 @@ export default function SignInPage() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center p-4">
       <SignIn
+        fallbackRedirectUrl="/admin"
+        signUpUrl="/sign-up"
         appearance={{
           elements: {
             rootBox: 'mx-auto',
