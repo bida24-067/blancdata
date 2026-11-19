@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${outfit.variable} h-full`}>
+      <html lang="en" data-scroll-behavior="smooth" className={`${outfit.variable} h-full`}>
         <head>
           <OrganizationSchema />
         </head>

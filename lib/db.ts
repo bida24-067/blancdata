@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 import path from 'path'
-import { Project } from '@/content/projects'
+import { Project, projects as staticProjects } from '@/content/projects'
 
 interface D1Result<T = unknown> {
   results: T[]
@@ -42,14 +42,20 @@ function getD1Database(): D1Database | null {
 async function readLocalProjects(): Promise<Project[]> {
   try {
     const raw = await fs.readFile(localProjectsFile, 'utf-8')
-    return JSON.parse(raw) as Project[]
+    const parsed = JSON.parse(raw) as Project[]
+    if (Array.isArray(parsed) && parsed.length > 0) return parsed
   } catch {
-    return []
+    // Filesystem not available on Cloudflare Workers edge runtime
   }
+  return staticProjects
 }
 
 async function writeLocalProjects(projects: Project[]): Promise<void> {
-  await fs.writeFile(localProjectsFile, JSON.stringify(projects, null, 2), 'utf-8')
+  try {
+    await fs.writeFile(localProjectsFile, JSON.stringify(projects, null, 2), 'utf-8')
+  } catch {
+    // Non-fatal on edge environments where filesystem is read-only
+  }
 }
 
 // Convert D1 database row into typed Project object
@@ -94,10 +100,11 @@ export async function getAllProjects(): Promise<Project[]> {
   if (db) {
     try {
       const res = await db.prepare('SELECT * FROM projects ORDER BY created_at DESC').all<Record<string, unknown>>()
-      return (res.results || []).map(mapRowToProject)
+      if (res.results && res.results.length > 0) {
+        return res.results.map(mapRowToProject)
+      }
     } catch (err) {
       console.error('Error querying Cloudflare D1:', err)
-      // Fallback to local
     }
   }
   return readLocalProjects()
@@ -113,10 +120,11 @@ export async function getPublishedProjects(): Promise<Project[]> {
       const res = await db
         .prepare("SELECT * FROM projects WHERE status != 'hidden' ORDER BY created_at DESC")
         .all<Record<string, unknown>>()
-      return (res.results || []).map(mapRowToProject)
+      if (res.results && res.results.length > 0) {
+        return res.results.map(mapRowToProject)
+      }
     } catch (err) {
       console.error('Error querying Cloudflare D1:', err)
-      // Fallback to local
     }
   }
   const all = await readLocalProjects()
