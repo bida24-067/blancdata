@@ -1,0 +1,72 @@
+[
+  {
+    "id": "agrivision",
+    "slug": "agrivision-yield-analytics",
+    "title": "AgriVision Yield Analytics",
+    "sector": "Agriculture Crop Farming",
+    "question": "Transform fragmented agronomic, environmental, and historical harvest data into reliable crop yield predictions and actionable operational insights for farmers and agricultural planners.",
+    "dataSource": "Kaggle Dataset",
+    "tools": [
+      "Databricks",
+      "PySpark",
+      "Delta Lake",
+      "PySpark MLlib (Random Forest)",
+      "Streamlit"
+    ],
+    "status": "complete",
+    "summary": "An end-to-end agricultural intelligence and crop yield forecasting platform designed to support climate resilience, food security, and data-driven farm planning.",
+    "detail": {
+      "problem": "Transform fragmented agronomic, environmental, and historical harvest data into reliable crop yield predictions and actionable operational insights for farmers and agricultural planners.",
+      "data": "Kaggle Dataset covering crop production metrics, rainfall patterns, temperature anomalies, fertilizer usage, and regional cultivation data.",
+      "method": "Built on Databricks using PySpark and Delta Lake. Trained an MLlib Random Forest regression model to forecast expected crop yields across varying environmental and input conditions. Evaluates feature importance to identify which agronomic and climatic variables have the strongest impact on harvest outcomes, allowing stakeholders to simulate \"what-if\" scenarios.",
+      "result": "Interactive Streamlit Web App: Provides an accessible front-end interface where users can input farm parameters, explore regional yield trends, and generate real-time yield forecasts without touching code. Strategic Relevance: Directly addresses food security and agricultural innovation challenges in Botswana by enabling proactive resource allocation, mitigating climate-driven harvest risks, and modernizing agricultural decision-making.",
+      "limits": "Independent prototype built on public data while preparing to take on client work.",
+      "techStack": [
+        "Databricks",
+        "PySpark",
+        "Delta Lake",
+        "PySpark MLlib (Random Forest)",
+        "Streamlit"
+      ],
+      "architecture": "Built on Databricks using PySpark and Delta Lake to process large-scale, multi-variable agricultural datasets. Standardizes and joins historical crop production metrics with environmental and soil features into analytics-ready Delta tables."
+    },
+    "disclaimer": "Independent prototype built on public data while we prepare to take on client work. Not produced for or endorsed by any organisation.",
+    "demoUrl": ""
+  },
+  {
+    "id": "bnpl",
+    "slug": "bnpl-credit-risk",
+    "title": "Buy Now, Pay Later (BNPL) Credit Risk Scoring & Loan Recommendation Pipeline",
+    "sector": "Financial Services / Credit Risk",
+    "question": "Automate credit underwriting for short-term installment loans by predicting default probabilities, balancing approval rates against financial exposure, and eliminating manual review bottlenecks.",
+    "dataSource": "Kaggle Dataset",
+    "tools": [
+      "Databricks",
+      "PySpark",
+      "Delta Lake (Medallion Architecture)",
+      "PySpark ML",
+      "Databricks Lakeview Dashboards",
+      "Streamlit"
+    ],
+    "status": "in-progress",
+    "summary": "An end-to-end automated credit decisioning engine built to evaluate applicant default risk in real time and dynamically recommend tailored credit limits and loan terms.",
+    "detail": {
+      "problem": "Automate credit underwriting for short-term installment loans by predicting default probabilities, balancing approval rates against financial exposure, and eliminating manual review bottlenecks.",
+      "data": "Kaggle Dataset covering applicant demographic records, raw transaction logs, and historical repayment histories.",
+      "method": "Default Probability Scoring: Uses a supervised classification pipeline built in PySpark ML to score each applicant's probability of default (PD). Rules-Based Recommendation Layer: Pairs the ML risk score with business logic to dynamically assign risk tiers, recommend maximum safe credit limits, and output instant Approve / Decline / Manual Review decisions.",
+      "result": "Designed a multi-level Databricks Lakeview Dashboard (and an interactive Streamlit prototype) to monitor portfolio-level risk exposure, evaluate cost-loss matrices across probability thresholds, and inspect individual applicant scoring breakdowns.",
+      "limits": "Independent prototype built on public data while preparing to take on client work.",
+      "techStack": [
+        "Databricks",
+        "PySpark",
+        "Delta Lake (Medallion Architecture)",
+        "PySpark ML",
+        "Databricks Lakeview Dashboards",
+        "Streamlit"
+      ],
+      "architecture": "Medallion Structure: Bronze Layer (Raw Ingestion with schema enforcement) → Silver Layer (Cleaning, deduplication & standardization) → Gold Layer (Feature Store: DTI ratios, repayment velocity, delinquency counts, credit utilization) → ML Scoring & Decision Engine"
+    },
+    "disclaimer": "Independent prototype built on public data while we prepare to take on client work. Not produced for or endorsed by any organisation.",
+    "demoUrl": ""
+  }
+]

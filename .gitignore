@@ -1,0 +1,11 @@
+.env*
+!.env.example
+node_modules/
+.next/
+.vercel/
+.wrangler/
+.open-next/
+dist/
+.DS_Store
+*.tsbuildinfo
+design/reference/
