@@ -3,7 +3,11 @@ import { MetadataRoute } from 'next'
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: '*', allow: '/', disallow: ['/admin', '/admin/*', '/api/'] },
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/admin', '/admin/*', '/api/', '/sign-in', '/sign-up'],
+      },
     ],
     sitemap: 'https://blancsociety.co.uk/sitemap.xml',
   }

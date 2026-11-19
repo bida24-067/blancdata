@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   },
   description:
     'Blanc Data builds enterprise data pipelines, interactive dashboards, and predictive machine learning models for organisations in Botswana and the SADC region.',
+  alternates: {
+    canonical: 'https://blancsociety.co.uk',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_BW',
@@ -27,8 +30,20 @@ export const metadata: Metadata = {
     siteName: 'Blanc Data',
     title: 'Blanc Data | Data Analytics in Botswana',
     description: 'Transforming complex data into actionable dashboards and predictive models.',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Blanc Data — Data Analytics & Intelligence in Botswana',
+      },
+    ],
   },
-  twitter: { card: 'summary_large_image' },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@blancdata',
+    images: ['/opengraph-image'],
+  },
   robots: { index: true, follow: true },
   icons: {
     icon: [
@@ -44,7 +59,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider>
-      <html lang="en" data-scroll-behavior="smooth" className={`${outfit.variable} h-full`}>
+      <html lang="en-BW" data-scroll-behavior="smooth" className={`${outfit.variable} h-full`}>
         <head>
           <OrganizationSchema />
         </head>

@@ -1,9 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { BreadcrumbSchema } from '@/components/BreadcrumbSchema'
+import { FAQSchema } from '@/components/FAQSchema'
 
 export const metadata: Metadata = {
   title: 'Services & Capabilities',
   description: 'Explore Blanc Data services: automated reporting dashboards, data cleaning pipelines, market analysis, and predictive machine learning models in Botswana.',
+  alternates: { canonical: 'https://blancsociety.co.uk/services' },
+  openGraph: {
+    title: 'Data Analytics Services in Botswana | Blanc Data',
+    description: 'Explore Blanc Data services: automated reporting dashboards, data cleaning pipelines, market analysis, and predictive machine learning models in Botswana.',
+    url: 'https://blancsociety.co.uk/services',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Blanc Data Services' }],
+  },
 }
 
 const detailedServices = [
@@ -66,8 +75,38 @@ const detailedServices = [
 ]
 
 export default function ServicesPage() {
+  const faqItems = [
+    {
+      question: 'What data analytics services does Blanc Data offer in Botswana?',
+      answer:
+        'Blanc Data offers four core services: interactive dashboard and reporting systems, data cleaning and ETL pipeline engineering, market and sector analysis for Botswana and the SADC region, and predictive machine learning modelling.',
+    },
+    {
+      question: 'How does Blanc Data structure a typical data project?',
+      answer:
+        'Every project follows a four-stage framework: Scope (agreeing on the core question and data sources), Prototype (delivering a working model on real sample data before full commitment), Deliver (completing the automated pipeline, models, and documentation), and Hand Over (providing complete source code, dashboards, and an executive walkthrough).',
+    },
+    {
+      question: 'Which tools and technologies does Blanc Data use?',
+      answer:
+        'We use PySpark and Databricks for large-scale data processing, Delta Lake for Medallion pipeline architecture, Python and Scikit-Learn for machine learning, Power BI and Streamlit for interactive dashboards, and SQL for structured data queries.',
+    },
+    {
+      question: 'Does Blanc Data work with organisations outside Botswana?',
+      answer:
+        'Yes. While we are based in Gaborone, Botswana, we work with organisations across the SADC region and can serve international clients remotely.',
+    },
+  ]
+
   return (
     <div className="flex flex-col">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', href: 'https://blancsociety.co.uk' },
+          { name: 'Services', href: 'https://blancsociety.co.uk/services' },
+        ]}
+      />
+      <FAQSchema items={faqItems} />
       {/* ── Page Header ── */}
       <section className="py-16 md:py-24 border-b border-white/[0.08] relative overflow-hidden bg-[#121212]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

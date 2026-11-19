@@ -2,11 +2,19 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getPublishedProjects } from '@/lib/db'
 import ProjectCardTile from '@/components/ProjectCardTile'
+import { BreadcrumbSchema } from '@/components/BreadcrumbSchema'
 
 export const metadata: Metadata = {
   title: 'Portfolio Projects & Technical Architecture',
   description:
     'Explore Blanc Data portfolio of agricultural intelligence, credit underwriting pipelines, and Databricks data architectures built on public datasets in Botswana and the SADC region.',
+  alternates: { canonical: 'https://blancsociety.co.uk/projects' },
+  openGraph: {
+    title: 'Blanc Data Portfolio · Data Projects in Botswana',
+    description: 'Explore Blanc Data portfolio of agricultural intelligence, credit underwriting pipelines, and Databricks data architectures built on public datasets.',
+    url: 'https://blancsociety.co.uk/projects',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Blanc Data Projects' }],
+  },
 }
 
 export default async function ProjectsPage() {
@@ -14,6 +22,12 @@ export default async function ProjectsPage() {
 
   return (
     <div className="flex flex-col">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', href: 'https://blancsociety.co.uk' },
+          { name: 'Projects', href: 'https://blancsociety.co.uk/projects' },
+        ]}
+      />
       {/* ── Header ── */}
       <section className="py-16 md:py-24 border-b border-white/[0.08] bg-[#121212]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

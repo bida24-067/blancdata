@@ -1,14 +1,28 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
+import { BreadcrumbSchema } from '@/components/BreadcrumbSchema'
 
 export const metadata: Metadata = {
   title: 'Contact Us · Start a Project',
   description: 'Initiate an analytics consultation with Blanc Data in Gaborone, Botswana. We reply within 3 business days.',
+  alternates: { canonical: 'https://blancsociety.co.uk/contact' },
+  openGraph: {
+    title: 'Contact Blanc Data · Start a Project',
+    description: 'Initiate an analytics consultation with Blanc Data in Gaborone, Botswana. We reply within 3 business days.',
+    url: 'https://blancsociety.co.uk/contact',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Contact Blanc Data' }],
+  },
 }
 
 export default function ContactPage() {
   return (
     <div className="flex flex-col">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', href: 'https://blancsociety.co.uk' },
+          { name: 'Contact', href: 'https://blancsociety.co.uk/contact' },
+        ]}
+      />
       {/* ── Page Header ── */}
       <section className="py-16 md:py-24 border-b border-white/[0.08] bg-[#121212]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

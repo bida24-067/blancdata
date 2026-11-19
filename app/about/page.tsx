@@ -1,10 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { team } from '@/content/team'
+import { BreadcrumbSchema } from '@/components/BreadcrumbSchema'
 
 export const metadata: Metadata = {
   title: 'About Us · Leadership & Methodology',
   description: 'Blanc Data is a data consultancy in Gaborone, Botswana. Meet founder Loago Montsho, our analysts, and our operating commitments.',
+  alternates: { canonical: 'https://blancsociety.co.uk/about' },
+  openGraph: {
+    title: 'About Blanc Data · Leadership & Methodology',
+    description: 'Blanc Data is a data consultancy in Gaborone, Botswana. Meet founder Loago Montsho, our analysts, and our operating commitments.',
+    url: 'https://blancsociety.co.uk/about',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'About Blanc Data' }],
+  },
 }
 
 const commitments = [
@@ -25,6 +33,12 @@ const commitments = [
 export default function AboutPage() {
   return (
     <div className="flex flex-col">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', href: 'https://blancsociety.co.uk' },
+          { name: 'About', href: 'https://blancsociety.co.uk/about' },
+        ]}
+      />
       {/* ── Header ── */}
       <section className="py-16 md:py-24 border-b border-white/[0.08] bg-[#121212]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

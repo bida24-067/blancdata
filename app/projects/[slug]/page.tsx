@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getProjectBySlug, getPublishedProjects } from '@/lib/db'
+import { BreadcrumbSchema } from '@/components/BreadcrumbSchema'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -16,9 +17,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const project = await getProjectBySlug(slug)
   if (!project) return {}
+  const url = `https://blancsociety.co.uk/projects/${slug}`
   return {
     title: `${project.title} · Case Study`,
     description: project.summary,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'article',
+      url,
+      title: `${project.title} · Blanc Data Case Study`,
+      description: project.summary,
+      siteName: 'Blanc Data',
+      locale: 'en_BW',
+      images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: project.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${project.title} · Blanc Data`,
+      description: project.summary,
+      images: ['/opengraph-image'],
+    },
   }
 }
 
@@ -29,6 +47,13 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   return (
     <article className="flex flex-col">
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', href: 'https://blancsociety.co.uk' },
+          { name: 'Projects', href: 'https://blancsociety.co.uk/projects' },
+          { name: project.title, href: `https://blancsociety.co.uk/projects/${slug}` },
+        ]}
+      />
       {/* ── Header ── */}
       <section className="py-16 md:py-24 border-b border-white/[0.08] bg-[#121212]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
