@@ -17,7 +17,7 @@ database_id = "031367e3-ccc4-4996-bd8c-65386f84a5ea"
 migrations_dir = "db"
 
 [vars]
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = "pk_test_c21vb3RoLWNyb3ctNzc5LmNsZXJrLmFjY291bnRzLmRldiQ"
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = "pk_live_Y2xlcmsuYmxhbmNzb2NpZXR5LmNvLnVrJA"
 NEXT_PUBLIC_CLERK_SIGN_IN_URL = "/sign-in"
 NEXT_PUBLIC_CLERK_SIGN_UP_URL = "/sign-up"
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL = "/admin"
