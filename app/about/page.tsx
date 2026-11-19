@@ -106,9 +106,9 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                {member.id === 'loago' && (
+                {member.skills && member.skills.length > 0 && (
                   <div className="mt-6 pt-4 border-t border-white/[0.06] flex flex-wrap gap-2">
-                    {['Databricks', 'PySpark', 'SQL', 'Power BI', 'Delta Lake', 'Lean Six Sigma'].map((tag) => (
+                    {member.skills.map((tag) => (
                       <span key={tag} className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#121212] border border-white/[0.06] text-white/70">
                         {tag}
                       </span>
