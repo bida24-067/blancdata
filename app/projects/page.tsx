@@ -34,10 +34,11 @@ export default async function ProjectsPage() {
         {/* Background Image at 45% opacity */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <Image
-            src="/projects-bg.jpg"
+            src="/projects-bg.webp"
             alt=""
             fill
             priority
+            quality={80}
             sizes="100vw"
             className="object-cover object-center opacity-45"
           />

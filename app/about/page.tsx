@@ -45,10 +45,11 @@ export default function AboutPage() {
         {/* Background Image at 45% opacity */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <Image
-            src="/about-bg.jpg"
+            src="/about-bg.webp"
             alt=""
             fill
             priority
+            quality={80}
             sizes="100vw"
             className="object-cover object-center opacity-45"
           />

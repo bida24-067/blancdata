@@ -21,10 +21,11 @@ export default async function HomePage() {
         {/* Background Image at 45% opacity */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <Image
-            src="/background.jpg"
+            src="/background.webp"
             alt=""
             fill
             priority
+            quality={80}
             sizes="100vw"
             className="object-cover object-center opacity-45"
           />

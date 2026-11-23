@@ -62,6 +62,7 @@ export default function Footer() {
                 { label: 'Projects', href: '/projects' },
                 { label: 'About Us', href: '/about' },
                 { label: 'Contact', href: '/contact' },
+                { label: 'Help & Support', href: '/help' },
               ].map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="text-sm text-white/60 hover:text-white transition-colors">
@@ -114,6 +115,9 @@ export default function Footer() {
         <div className="mt-12 pt-6 border-t border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs text-white/40">
           <p>© {year} Blanc Data. Independent Data Consultancy · Gaborone, Botswana.</p>
           <div className="flex gap-4">
+            <Link href="/help" className="hover:text-white transition-colors">
+              Help
+            </Link>
             <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy
             </Link>
